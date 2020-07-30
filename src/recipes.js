@@ -44,11 +44,19 @@ const updateRecipe = (id, updates) => {
 	if (typeof updates.body === 'string') {
 		recipe.body = updates.body
 	}
+	if (typeof updates.ingredients === 'string') {
+		recipe.ingredients = [...recipe.ingredients, updates.ingredients]
+	}
 
 	saveRecipe()
 	return recipe
 }
 
+const getIngredients = (id) => {
+	const recipe = recipes.find((recipe) => recipe.id === id)
+	return recipe.ingredients
+}
+
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipe, getRecipes, createRecipe, updateRecipe }
+export { loadRecipes, saveRecipe, getRecipes, createRecipe, updateRecipe, getIngredients }
