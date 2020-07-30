@@ -38,8 +38,8 @@ const renderRecipes = () => {
 }
 
 const initializeEditPage = (recipeId) => {
-	const titleEl = document.querySelector('#recipe-title')
-	const bodyEl = document.querySelector('#recipe-body')
+	const titleEl = document.querySelector('#title-input')
+	const bodyEl = document.querySelector('#body-input')
 
 	const recipes = getRecipes()
 	const recipe = recipes.find((recipe) => recipe.id === recipeId)
