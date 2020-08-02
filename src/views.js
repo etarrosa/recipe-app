@@ -1,9 +1,10 @@
-import { getRecipes } from './recipes'
+import { getRecipes, getIngredients } from './recipes'
+const recipeId = location.hash.substring(1)
 
+// Displays recipes on home page
 const generateRecipeDOM = (recipe) => {
 	const recipeEl = document.createElement('a')
 	const titleEl = document.createElement('h2')
-	const instructionsEl = document.createElement('p')
 
 	if (recipe.title.length > 0) {
 		titleEl.textContent = recipe.title
@@ -11,15 +12,8 @@ const generateRecipeDOM = (recipe) => {
 		titleEl.textContent = 'Unnamed recipe'
 	}
 
-	if (recipe.body.length > 0) {
-		instructionsEl.textContent = recipe.body
-	} else {
-		instructionsEl.textContent = 'Add instructions'
-	}
 	titleEl.classList.add('list-recipe__title')
-	instructionsEl.classList.add('list-recipe__instructions')
 	recipeEl.appendChild(titleEl)
-	recipeEl.appendChild(instructionsEl)
 
 	// Setup the link
 	recipeEl.setAttribute('href', `/edit.html#${recipe.id}`)
@@ -52,4 +46,23 @@ const initializeEditPage = (recipeId) => {
 	bodyEl.value = recipe.body
 }
 
-export { renderRecipes, initializeEditPage }
+const generateIngredientsDOM = (ingredient) => {
+	const ingredientEl = document.querySelector('#ingredients-container')
+	const textEl = document.createElement('li')
+
+	if (ingredient.length > 0) {
+		textEl.textContent = ingredient
+	}
+	ingredientEl.appendChild(textEl)
+}
+
+const renderIngredient = () => {
+	const ingredArr = getIngredients(recipeId)
+	ingredArr.forEach((ingredient) => {
+		generateIngredientsDOM(ingredient)
+	})
+}
+
+renderIngredient()
+
+export { renderRecipes, initializeEditPage, renderIngredient, recipeId }

@@ -12,6 +12,18 @@ const loadRecipes = () => {
 	}
 }
 
+recipes = loadRecipes()
+
+const getIngredients = (id) => {
+	const recipe = recipes.find((recipe) => recipe.id === id)
+
+	try {
+		return recipe ? recipe.ingredients : []
+	} catch (e) {
+		return []
+	}
+}
+
 const saveRecipe = () => {
 	localStorage.setItem('recipe', JSON.stringify(recipes))
 }
@@ -52,11 +64,4 @@ const updateRecipe = (id, updates) => {
 	return recipe
 }
 
-const getIngredients = (id) => {
-	const recipe = recipes.find((recipe) => recipe.id === id)
-	return recipe.ingredients
-}
-
-recipes = loadRecipes()
-
-export { loadRecipes, saveRecipe, getRecipes, createRecipe, updateRecipe, getIngredients }
+export { loadRecipes, saveRecipe, getRecipes, createRecipe, updateRecipe, getIngredients, recipes }

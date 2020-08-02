@@ -3,6 +3,7 @@
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<link rel="stylesheet" href="/styles/styles.css" />
 		<title>Recipe App</title>
 	</head>
 	<body>
@@ -18,11 +19,20 @@
 			</div>
 		</div>
 		<div class="container">
-			<input type="text" id="title-input" class="title-input" placeholder="Recipe title" />
+			<input type="text" id="title-input" class="title-input" placeholder="Enter recipe title" />
 			<textarea id="body-input" class="body-input" placeholder="Enter recipe directions"></textarea>
-			<input type="text" id="ingredient-input" class="ingredient-input" placeholder="Ingredient" />
+			<input
+				type="text"
+				id="ingredient-input"
+				class="title-input--secondary"
+				placeholder="Enter ingredient"
+			/>
 			<button id="ingredient-add-btn" class="button button--secondary">Add ingredient</button>
-			<button id="remove-recipe" class="button button--secondary">Remove recipe</button>
+			<p class="remove-message">click added ingredient to remove</p>
+			<ul id="ingredients-container"></ul>
+		</div>
+		<div class="container">
+			<button id="remove-recipe" class="button button--secondary button--remove">Remove recipe</button>
 		</div>
 	</body>
 	<script src="/scripts/edit-bundle.js"></script>
