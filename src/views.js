@@ -3,8 +3,11 @@ const recipeId = location.hash.substring(1)
 
 // Displays recipes on home page
 const generateRecipeDOM = (recipe) => {
-	const recipeEl = document.createElement('a')
+	const recipeEl = document.createElement('div')
 	const titleEl = document.createElement('h2')
+	const editBtn = document.createElement('button')
+	const viewBtn = document.createElement('button')
+	const btnContainer = document.createElement('div')
 
 	if (recipe.title.length > 0) {
 		titleEl.textContent = recipe.title
@@ -13,11 +16,23 @@ const generateRecipeDOM = (recipe) => {
 	}
 
 	titleEl.classList.add('list-recipe__title')
-	recipeEl.appendChild(titleEl)
-
-	// Setup the link
-	recipeEl.setAttribute('href', `/edit.html#${recipe.id}`)
 	recipeEl.classList.add('list-recipe')
+	recipeEl.appendChild(titleEl)
+	recipeEl.appendChild(btnContainer)
+
+	viewBtn.classList.add('button')
+	viewBtn.classList.add('button--tertiary')
+	viewBtn.textContent = 'View'
+
+	editBtn.classList.add('button')
+	editBtn.classList.add('button--tertiary')
+	editBtn.textContent = 'Edit'
+
+	btnContainer.appendChild(viewBtn)
+	btnContainer.appendChild(editBtn)
+
+	viewBtn.addEventListener('click', () => location.assign(`/summery.html#${recipe.id}`))
+	editBtn.addEventListener('click', () => location.assign(`/edit.html#${recipe.id}`))
 
 	return recipeEl
 }

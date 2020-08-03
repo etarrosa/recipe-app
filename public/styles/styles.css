@@ -114,14 +114,20 @@ li {
 	font-size: 1.6rem;
 }
 
+.button--tertiary {
+	padding: 0.5rem 1rem;
+	margin-left: 1rem;
+}
+
 .list-recipe {
+	display: flex;
+	justify-content: space-between;
 	text-decoration: none;
 	color: #333333;
 	background: #f7f7f7;
 	border: 1px solid #dedfe0;
 	margin: 1.6rem 0;
 	padding: 1.6rem;
-	display: block;
 	transition: background 0.3s ease;
 }
 
