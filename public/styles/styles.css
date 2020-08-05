@@ -145,7 +145,7 @@ li {
 	margin: 3.2rem 0;
 }
 
-/* Note editor */
+/* Edit page */
 
 .title-input {
 	border: 1px solid #dedfe0;
@@ -177,4 +177,21 @@ li {
 	min-height: 25rem;
 	padding: 0.8rem;
 	width: 100%;
+}
+
+/* Summery page */
+
+.constainer_instructions {
+	max-width: 60rem;
+	margin: 0 auto;
+	padding: 0 1.6rem;
+}
+
+#instructions {
+	font-size: 2rem;
+	color: #333333;
+	background: #f7f7f7;
+	border: 1px solid #dedfe0;
+	margin: 1.6rem 0;
+	padding: 1.6rem;
 }

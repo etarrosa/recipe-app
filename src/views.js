@@ -46,6 +46,7 @@ const renderRecipes = () => {
 	})
 }
 
+// Edit page
 const initializeEditPage = (recipeId) => {
 	const titleEl = document.querySelector('#title-input')
 	const bodyEl = document.querySelector('#body-input')
@@ -77,7 +78,5 @@ const renderIngredient = () => {
 		generateIngredientsDOM(ingredient)
 	})
 }
-
-renderIngredient()
 
 export { renderRecipes, initializeEditPage, renderIngredient, recipeId }
