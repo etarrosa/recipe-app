@@ -1,4 +1,5 @@
 import { getRecipes, getIngredients } from './recipes'
+import { getFilter } from './filters'
 const recipeId = location.hash.substring(1)
 
 // Displays recipes on home page
@@ -40,10 +41,24 @@ const generateRecipeDOM = (recipe) => {
 const renderRecipes = () => {
 	const recipesEl = document.querySelector('#recipes')
 	const recipes = getRecipes()
-	recipes.forEach((recipe) => {
-		const recipeElement = generateRecipeDOM(recipe)
-		recipesEl.appendChild(recipeElement)
-	})
+	const filters = getFilter()
+	const filteredRecipes = recipes.filter((recipe) =>
+		recipe.title.toLowerCase().includes(filters.searchText.toLowerCase())
+	)
+
+	recipesEl.innerHTML = ''
+
+	if (filteredRecipes.length > 0) {
+		filteredRecipes.forEach((recipe) => {
+			const recipeEl = generateRecipeDOM(recipe)
+			recipesEl.appendChild(recipeEl)
+		})
+	} else {
+		const emptyMessage = document.createElement('p')
+		emptyMessage.textContent = 'No recipes to show'
+		emptyMessage.classList.add('empty-message')
+		recipesEl.appendChild(emptyMessage)
+	}
 }
 
 // Edit page
@@ -68,8 +83,8 @@ const generateIngredientsDOM = (ingredient) => {
 
 	if (ingredient.length > 0) {
 		textEl.textContent = ingredient
+		ingredientEl.appendChild(textEl)
 	}
-	ingredientEl.appendChild(textEl)
 }
 
 const renderIngredient = () => {

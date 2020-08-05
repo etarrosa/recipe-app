@@ -64,4 +64,13 @@ const updateRecipe = (id, updates) => {
 	return recipe
 }
 
-export { loadRecipes, saveRecipe, getRecipes, createRecipe, updateRecipe, getIngredients, recipes }
+const removeRecipe = (id) => {
+	const recipeIndex = recipes.findIndex((recipe) => recipe.id === id)
+
+	if (recipeIndex > -1) {
+		recipes.splice(recipeIndex, 1)
+		saveRecipe()
+	}
+}
+
+export { loadRecipes, saveRecipe, getRecipes, createRecipe, updateRecipe, getIngredients, removeRecipe }
