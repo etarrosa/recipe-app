@@ -1,4 +1,4 @@
-import { saveRecipe, updateRecipe, recipes } from './recipes'
+import { saveRecipe, updateRecipe, getRecipes, removeRecipe } from './recipes'
 import { initializeEditPage, renderIngredient, recipeId } from './views'
 
 const titleEl = document.querySelector('#title-input')
@@ -52,6 +52,7 @@ ingredientBtn.addEventListener('click', () => {
 })
 
 const removeIngredient = (clickedItem, recipeId) => {
+	const recipes = getRecipes()
 	const currentRecipe = recipes.find((recipe) => recipe.id === recipeId)
 	const itemIndex = currentRecipe.ingredients.findIndex(
 		(ingredient) => ingredient === clickedItem.textContent
@@ -73,3 +74,9 @@ const remove = (e) => {
 
 const parentUl = document.querySelector('#ingredients-container')
 parentUl.addEventListener('click', (e) => remove(e))
+
+const removeRecipeBtn = document.querySelector('#remove-recipe')
+removeRecipeBtn.addEventListener('click', () => {
+	removeRecipe(recipeId)
+	location.assign('/index.html')
+})

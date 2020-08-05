@@ -1,4 +1,4 @@
-import { recipeId } from './views'
+import { recipeId, renderIngredient } from './views'
 import { getRecipes } from './recipes'
 
 const initializeSummeryPage = (recipeId) => {
@@ -14,6 +14,25 @@ const initializeSummeryPage = (recipeId) => {
 
 	summTitleEl.textContent = recipe.title
 	bodyEl.textContent = recipe.body
+
+	const generateIngredSummery = (ingredient) => {
+		const ingredientEl = document.querySelector('#ingredients-summery')
+		const ingredientLi = document.createElement('li')
+
+		if (ingredient.length > 0) {
+			ingredientLi.textContent = ingredient
+			ingredientLi.classList.add('li-summery')
+			ingredientEl.appendChild(ingredientLi)
+		}
+	}
+
+	const renderIngred = () => {
+		recipe.ingredients.forEach((ingredient) => {
+			generateIngredSummery(ingredient)
+		})
+	}
+
+	renderIngred()
 }
 
 initializeSummeryPage(recipeId)
