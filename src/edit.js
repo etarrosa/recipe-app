@@ -12,6 +12,7 @@ const clearIngredients = () => {
 }
 
 initializeEditPage(recipeId)
+renderIngredient()
 
 // Saves title input
 titleEl.addEventListener('input', (e) => {
